@@ -7,6 +7,7 @@ const Turn = require('../src/Turn');
 describe('Turn', () => {
     let card;
     let turn1;
+    let turn2;
 
     beforeEach(() => {
         card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
