@@ -7,31 +7,25 @@ class Round {
         this.turns = 0;
         this.incorrectGuesses = [];
         this.correctGuesses = [];
-    }
+    };
 
-    returnCurrentCard() {
-        this.currentCard = this.deck[this.turns]
-        return this.currentCard
-    }
+    returnCurrentCard = () => { return this.currentCard = this.deck[this.turns] };
 
-    takeTurn(userGuess) {
+    takeTurn = (userGuess) => {
+        const turn = new Turn(userGuess, this.currentCard);
         this.turns += 1;
-        let turn = new Turn(userGuess, this.currentCard)
-        if(!turn.evaluateGuess()) {
-            this.incorrectGuesses.push(this.currentCard.id)
-        } else {
-            this.correctGuesses.push(this.currentCard.id)
-        }           
-        this.returnCurrentCard()
+        turn.evaluateGuess() ? this.correctGuesses.push(this.currentCard.id) : this.incorrectGuesses.push(this.currentCard.id);          
+        this.returnCurrentCard();
         return turn.giveFeedback();
-    }
+    };
 
-    calculatePercentCorrect() {
-        return Math.floor((this.correctGuesses.length / this.turns) * 100);
-    }
+    calculatePercentCorrect = () => { return Math.floor((this.correctGuesses.length / this.turns) * 100) };
 
-    endRound() {
-        return `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`
+    endRound = () => {
+        const endMessage = `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`
+        console.log(endMessage)
+        console.timeLog('Game run time: ')
+        return endMessage
     }
 }
 
