@@ -9,24 +9,26 @@ class Round {
         this.correctGuesses = [];
     };
 
-    returnCurrentCard = () => { return this.currentCard = this.deck[this.turns] };
+    returnCurrentCard = () => this.currentCard = this.deck[this.turns];
 
     takeTurn = (userGuess) => {
         const turn = new Turn(userGuess, this.currentCard);
         this.turns += 1;
-        turn.evaluateGuess() ? this.correctGuesses.push(this.currentCard.id) : this.incorrectGuesses.push(this.currentCard.id);          
+        turn.evaluateGuess()
+            ? this.correctGuesses.push(this.currentCard.id) 
+            : this.incorrectGuesses.push(this.currentCard.id);          
         this.returnCurrentCard();
         return turn.giveFeedback();
     };
 
-    calculatePercentCorrect = () => { return Math.floor((this.correctGuesses.length / this.turns) * 100) };
+    calculatePercentCorrect = () => Math.floor((this.correctGuesses.length / this.turns) * 100);
 
     endRound = () => {
         const endMessage = `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`
         console.log(endMessage)
         console.timeLog('Game run time: ')
         return endMessage
-    }
-}
+    };
+};
 
 module.exports = Round;
