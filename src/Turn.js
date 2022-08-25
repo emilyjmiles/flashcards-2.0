@@ -4,15 +4,11 @@ class Turn {
         this.card = currentCard;
     };
 
-    returnGuess() {
-        return this.guess
-    };
+    returnGuess = () => { return this.guess };
 
-    returnCard() {
-        return this.card;
-    };
+    returnCard = () => { return this.card };
 
-    evaluateGuess() {
+    evaluateGuess = () => {
         if (this.card.correctAnswer !== this.guess) {
             return false
         } else {
@@ -20,7 +16,7 @@ class Turn {
         };
     };
 
-    giveFeedback() {
+    giveFeedback = () => {
         if (this.evaluateGuess() === false) {
             return 'Incorrect!'
         } else {
