@@ -15,8 +15,6 @@ describe('Game', () => {
     beforeEach( () => {
         cards = [
             new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object'),
-            new Card(2, 'What is a comma-separated list of related values?', ['array', 'object', 'function'], 'array'),
-            new Card(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')
         ];
         deck = new Deck(cards);
         round = new Round(deck)
@@ -45,13 +43,17 @@ describe('Game', () => {
 
     it('should be able to create cards', () => {
         expect(game.createCards()).to.deep.equal(game.cards)
+        expect(game.cards[10]).to.be.an.instanceOf(Card)
+        expect(game.cards[20]).to.be.an.instanceOf(Card)
     });
     
     it('should be able to store created cards in a deck', () => {
         expect(game.createDeck()).to.deep.equal(game.deck)
+        expect(game.deck).to.be.an.instanceOf(Deck)
     });
     
     it('should be able to start a round using deck that is created', () => {
-        expect(game.newRound()).to.deep.equal(game.round)        
+        expect(game.newRound()).to.deep.equal(game.round)  
+        expect(game.round).to.be.an.instanceOf(Round)      
     });
 });
