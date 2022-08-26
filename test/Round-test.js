@@ -12,10 +12,10 @@ describe('Round', () => {
 
     beforeEach( () => {
        cards = [
-        new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object'),
-        new Card(2, 'What is a comma-separated list of related values?', ['array', 'object', 'function'], 'array'),
-        new Card(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')
-       ];
+            new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object'),
+            new Card(2, 'What is a comma-separated list of related values?', ['array', 'object', 'function'], 'array'),
+            new Card(3, 'What type of prototype method directly modifies the existing array?', ['mutator method', 'accessor method', 'iteration method'], 'mutator method')
+        ];
        deck = new Deck(cards);
        round = new Round(deck)
     });
